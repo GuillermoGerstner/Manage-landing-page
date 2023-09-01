@@ -1,27 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
+.btnShadow {
+  box-shadow: 0px 15px 15px -10px #ff9f8e;
+}
+.btnShadow2 {
+  box-shadow: 0px 15px 15px -10px #db5943;
+}
+
+.toWhite {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%)
+    hue-rotate(100deg) brightness(115%) contrast(106%);
+}
+
+.modalBg {
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    180deg,
+    rgba(0, 0, 0, 0) 0.08%,
+    rgba(0, 0, 0, 0.6) 99.95%
+  );
+}
+.modalNav {
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0px 10px 20px 0px rgba(80, 86, 98, 0.03);
+}
+
+.testimonialsSlideDesktop {
+  animation: 30s slide infinite linear;
+}
+.testimonial {
+  transition: all 0.5s ease-out;
 }

@@ -1,20 +1,28 @@
-import type { Config } from 'tailwindcss'
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      mobile: "375px",
+      tablet: "768px",
+      1024: "1024px",
+      desktop: "1440px",
+    },
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        one: "#f3603c",
+        two: "#242d52",
+        three: "#1d1e25",
+        four: "#fffoec",
       },
+    },
+    fontFamily: {
+      Vietnam: ["Be Vietnam Pro", "sans-serif"],
     },
   },
   plugins: [],
-}
-export default config
+};
