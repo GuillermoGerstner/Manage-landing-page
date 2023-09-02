@@ -1,10 +1,5 @@
 import { StaticImageData } from "next/image";
 
-export interface HeaderProps {
-  isModalOpen: boolean;
-  setIsModalOpen: (modalOpened: boolean) => void;
-}
-
 export interface ButtonProps {
   text: string;
   model?: number;

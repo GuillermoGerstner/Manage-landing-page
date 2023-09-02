@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -5,13 +8,21 @@ import Button from "./Button";
 
 import { headerNavbarLinks } from "@/constants";
 
-import { HeaderProps } from "@/common.types";
-
 import logo from "@/public/logo.svg";
 import menu from "@/public/icon-hamburger.svg";
 import close from "@/public/icon-close.svg";
 
-const Header = ({ isModalOpen, setIsModalOpen }: HeaderProps) => {
+const Header = () => {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 768) {
+        setIsModalOpen(false);
+      }
+    });
+  }, []);
+
   return (
     <header className="px-6 desktop:px-[165px] mt-[41px] tablet:mt-14 flex justify-between items-start max-w-[1440px] mx-auto">
       <Image
@@ -40,7 +51,10 @@ const Header = ({ isModalOpen, setIsModalOpen }: HeaderProps) => {
         className={`w-[25px] h-auto tablet:hidden cursor-pointer ${
           isModalOpen ? "hidden" : ""
         }`}
-        onClick={() => setIsModalOpen(true)}
+        onClick={() => {
+          setIsModalOpen(true);
+          document.getElementById("page")?.classList.add("modalOpen");
+        }}
       />
 
       <div
@@ -54,7 +68,10 @@ const Header = ({ isModalOpen, setIsModalOpen }: HeaderProps) => {
           className={`w-[21px] h-auto absolute top-[39px] right-[26px] cursor-pointer ${
             isModalOpen ? "" : "hidden"
           }`}
-          onClick={() => setIsModalOpen(false)}
+          onClick={() => {
+            setIsModalOpen(false);
+            document.getElementById("page")?.classList.remove("modalOpen");
+          }}
         />
 
         <nav className="modalNav mx-6 py-10 flex flex-col items-center gap-6">

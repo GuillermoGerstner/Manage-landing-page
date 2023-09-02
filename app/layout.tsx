@@ -1,6 +1,3 @@
-"use client";
-
-import { useState, useEffect } from "react";
 import Image from "next/image";
 
 import Header from "@/components/Header";
@@ -21,21 +18,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
-  useEffect(() => {
-    window.addEventListener("resize", () => {
-      if (window.innerWidth >= 768) {
-        setIsModalOpen(false);
-      }
-    });
-  }, []);
+  /* ${isModalOpen ? "h-screen overflow-hidden" : ""} */
 
   return (
     <html lang="en">
-      <body
-        className={`relative ${isModalOpen ? "h-screen overflow-hidden" : ""}`}
-      >
+      <body className={`relative `} id="page">
         <div className="absolute top-[-41px] tablet:top-[-56px] w-full h-full -z-10 overflow-hidden">
           <Image
             src={pattern}
@@ -49,7 +36,7 @@ export default function RootLayout({
           />
         </div>
 
-        <Header isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+        <Header />
 
         {children}
 
